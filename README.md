@@ -14,7 +14,7 @@
   <h3 align="center">News Aggregator with FastAPI</h3>
 
   <p align="center">
-    Boilerplate news aggregation application build for Reddit and NewsAPI. Main idea is to use lightweight development frameworks like FastAPI rather than heavy weight lifting with Django/ Flask. Further information can be found in <a hred="https://github.com/umairqadir97/news-aggregator-with-fastapi/blob/master/reports/Problem-Statement.md">Problem Statement</a> document.
+    Boilerplate news aggregation application build for Reddit and NewsAPI. Main idea is to use lightweight development frameworks like FastAPI rather than heavy weight lifting with Django/ Flask. Further information can be found in <a href="https://github.com/umairqadir97/news-aggregator-with-fastapi/blob/master/reports/Problem-Statement.md">Problem Statement</a> document.
     <br />
     <br />
     <br />
@@ -49,7 +49,7 @@
 [![Product Name Screen Shot][product-screenshot]](#about-the-project)
 
 
-The application is built in accordance with <a hred="https://github.com/umairqadir97/news-aggregator-with-fastapi/blob/master/reports/Problem-Statement.md">Problem Statement</a> document. All of the features are implemented. All the contraints are implemented, along with project documentation and unit-tests.
+The application is built in accordance with <a href="https://github.com/umairqadir97/news-aggregator-with-fastapi/blob/master/reports/Problem-Statement.md">Problem Statement</a> document. All of the features are implemented. All the contraints are implemented, along with project documentation and unit-tests.
 
 <br>
 
