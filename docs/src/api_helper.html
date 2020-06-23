@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>api_helper.py</title>
+  <link rel="stylesheet" href="../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>api_helper.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.config</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">src.external_api.reddit_api</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">src.external_api.news_api</span> <span class="kn">import</span> <span class="o">*</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Register your API in this API-COLLECTION</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">API_COLLECTION</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">REDDIT_API_MAPPING</span><span class="p">,</span>
+    <span class="n">NEWS_API_MAPPING</span>
+<span class="p">]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>=== Listing Endpoint ===
+Verify required Fields in API Parser&rsquo;s response</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">verify_attribute</span><span class="p">(</span><span class="n">response</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>This function is intended to make sure we are receiving right fields from
+dependent APIs.</p>
+<p>:param response: Response object received from sub APIs.
+:return: Return response object if valid, otherwise raise exception.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">required_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="kc">None</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>=== Search Endpoint ===
+Call &lsquo;Search&rsquo; endpoint of all registered APIs</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">get_news</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>This function will get top news from all registered APIs (in API_COLLECTION).
+:param limit: Integer number to limit number of responses from each API.
+:return: Return aggregated news results.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">response</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">api</span> <span class="ow">in</span> <span class="n">API_COLLECTION</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api</span><span class="p">[</span><span class="s2">&quot;listing_url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">),</span>
+                              <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-agent&#39;</span><span class="p">:</span> <span class="s1">&#39;your bot 0.1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="n">api</span><span class="p">[</span><span class="s2">&quot;parser&quot;</span><span class="p">](</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Call &lsquo;Search&rsquo; endpoint of all registered APIs</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">search_news</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>This function will get search results for given QUERY from all registered APIs (in API_COLLECTION).</p>
+<p>:param query: Search Query.
+:param limit: Integer number to limit number of responses from each API.
+:return: Return aggregated news results.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">response</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">api</span> <span class="ow">in</span> <span class="n">API_COLLECTION</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">api</span><span class="p">[</span><span class="s2">&quot;search_url&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">),</span>
+                              <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;User-agent&#39;</span><span class="p">:</span> <span class="s1">&#39;your bot 0.1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">+=</span> <span class="n">api</span><span class="p">[</span><span class="s2">&quot;parser&quot;</span><span class="p">](</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

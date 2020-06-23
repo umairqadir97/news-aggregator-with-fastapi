@@ -1,11 +1,11 @@
 import traceback
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from src.api_helper import *
 
 app = FastAPI()
 
-
+# === Application Main Endpoint
 @app.get("/news")
 def list_news(q: str = None, limit: int = 10):
     """

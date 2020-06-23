@@ -9,8 +9,7 @@ API_COLLECTION = [
     NEWS_API_MAPPING
 ]
 
-
-#
+# === Listing Endpoint ===
 # Verify required Fields in API Parser's response
 def verify_attribute(response):
     """
@@ -24,7 +23,7 @@ def verify_attribute(response):
     return None
 
 
-#
+# === Search Endpoint ===
 # Call 'Search' endpoint of all registered APIs
 def get_news(limit):
     """
