@@ -2,7 +2,7 @@
 
 1. get list of registered APIs
 2. Loop over APIs
-3. Make JSON pbject of configurations for each API
+3. Make JSON object of configurations for each API
 4. Write JSON parsers for each API
 5. Combine result in uniform format to display
 6. return results
@@ -25,12 +25,13 @@ def function():
 api.route('/news?query=bitcoin')
 def function():
        1. Get all available APIs
-       2. Call each API with searach query to get top 10 resultsin JSON; Searching Function for Each API
+       2. Call each API with search query to get top 10 results in JSON; Searching Function for Each API
        3. Aggregate results from all APIs, discard empty responses
 
 
 #### Other Helper Functions
-       1. News_API json parser for listing responses; should return only required fields; ["title",  "link", "source"]
+       1. News_API json parser for listing responses; 
+          should return only required fields; ["title",  "link", "source"]
        2. Reddit_API json parser for listing results
 
 

@@ -1,1 +1,1 @@
-print("project configurations")
+NEWS_API_KEY = ""
