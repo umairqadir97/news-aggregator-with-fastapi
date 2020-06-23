@@ -7,7 +7,15 @@ app = FastAPI()
 
 
 @app.get("/news")
-def list_news(request: Request, q: str = None, limit: int = 10):
+def list_news(q: str = None, limit: int = 10):
+    """
+    This single endpoint will server getting Top-Listings and Search functionality
+    for news aggregation APIs.
+
+    :param q: Search query in request url.
+    :param limit: Integer number to limit number of results to fetch from each dependent API.
+    :return: JSON response of aggregated results.
+    """
     try:
         if q:
             # call search endpoint

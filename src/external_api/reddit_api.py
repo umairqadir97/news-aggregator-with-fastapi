@@ -4,7 +4,15 @@ import requests
 def reddit_response_parser(results):
     """
     :param results: JSON Object
-    :return: List of dictionaries [{"title", "link", "reddit"},...]
+    :return: List of dictionaries
+            [
+                {
+                    "title": "title of the news",
+                    "link": "original link of the news source",
+                    "source":"your-api-name"
+                },
+            ...
+            ]
     """
     response = []
     for child in results["data"]["children"]:
