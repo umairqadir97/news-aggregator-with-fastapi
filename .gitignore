@@ -7,6 +7,13 @@ __pycache__/
 *.so
 
 
+#Custom
+./config.py
+config.py
+src/config.py
+
+
+
 # Distribution / packaging
 .Python
 build/
