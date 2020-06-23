@@ -87,32 +87,34 @@ Every Request to API should be async; put the request in job tracker, get result
 
 ##### News Listing Endpoint:
 api.route('/news')
-def function():
-       1. Get all available APIs
-       2. Call each API for getting top 10 news in JSON; Listing Function for Each API
-       3. Aggregate news from all APIs, discard empty responses
+
+def get_top_news():
+  1. Get all available APIs
+  2. Call each API for getting top 10 news in JSON; Listing Function for Each API
+  3. Aggregate news from all APIs, discard empty responses
        
 
 ##### News Search Endpoint
 api.route('/news?query=bitcoin')
-def function():
-       1. Get all available APIs
-       2. Call each API with search query to get top 10 results in JSON; Searching Function for Each API
-       3. Aggregate results from all APIs, discard empty responses
+
+def get_search_results():
+  1. Get all available APIs
+  2. Call each API with search query to get top 10 results in JSON; Searching Function for Each API
+  3. Aggregate results from all APIs, discard empty responses
 
 
 ##### Other Helper Functions
-       1. News_API json parser for listing responses; 
-          should return only required fields; ["title",  "link", "source"]
-       2. Reddit_API json parser for listing results
+  1. News_API json parser for listing responses; 
+    should return only required fields; ["title",  "link", "source"]
+  2. Reddit_API json parser for listing results
 
 
 ##### Steps to Add any New API
-       1. Make a new file for new API in ```src/external_api/```
-       2. Take ```src/external_api/sample_api.py``` as reference
-       3. Prepare API Mapping object
-       4. Write JSON parser for that API
-       5. Register your API in API_COLLECTION in ```src/api_helper.py```
+  1. Make a new file for new-API in ```src/external_api/```
+  2. Take ```src/external_api/sample_api.py``` as reference
+  3. Prepare API Mapping object
+  4. Write JSON parser for that API
+  5. Register your API in API_COLLECTION in ```src/api_helper.py```
 
 
 ### Prerequisites
@@ -142,6 +144,9 @@ cd news-aggregator-with-fastapi
 ```sh
 pip3 install -r requirements.txt
 ```
+
+3. Create your configurations file ```src/config.py```.
+Take ```src/sample_config.py``` as example
 
 4. Run server
 ```sh

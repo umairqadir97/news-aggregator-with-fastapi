@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "f0573fc8-e211-4ba0-b0a5-3e61e18a329b",
+		"name": "News_Aggregator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/news?q=bitcoin",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"news"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "bitcoin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Top News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/news",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"news"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
